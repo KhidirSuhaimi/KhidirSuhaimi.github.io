@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khidir | O Level Physics & Math Tutor Singapore</title>
+  <meta name="description" content="Struggling with O Level Physics or Math? Khidir offers fun, effective tutoring in Singapore — online & in-person. Contact for rates!" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #FFD54F;
+      --yellow-dark: #F9A825;
+      --navy: #0D1B2A;
+      --navy-mid: #1B2E45;
+      --teal: #00BFA5;
+      --teal-light: #E0F7FA;
+      --white: #FFFFFF;
+      --light-bg: #F7F9FC;
+      --text: #1a1a2e;
+      --muted: #5a6a7a;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,27,42,0.97);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900; font-size: 1.4rem;
+      color: var(--yellow);
+      letter-spacing: -0.5px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+      pointer-events: none;
+    }
+    .blob1 { width: 500px; height: 500px; background: var(--teal); top: -100px; right: -100px; }
+    .blob2 { width: 400px; height: 400px; background: var(--yellow); bottom: -80px; left: -80px; }
+
+    .hero-content {
+      max-width: 700px;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,213,79,0.15);
+      border: 1.5px solid var(--yellow);
+      color: var(--yellow);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--yellow); }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+      margin-left: auto; margin-right: auto;
+    }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--yellow);
+      color: var(--navy);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(255,213,79,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,213,79,0.45); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--yellow); background: rgba(255,213,79,0.07); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--yellow);
+    }
+    .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+    /* SUBJECTS */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .subject-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      border: 1.5px solid #e8edf2;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .subject-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.09); }
+    .subject-icon {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .subject-card h3 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .subject-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+    .subject-accent {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .accent-yellow { background: var(--yellow); }
+    .accent-teal { background: var(--teal); }
+
+    /* WHY ME */
+    .why-section { background: var(--navy); }
+    .why-section .section-title { color: var(--white); }
+    .why-section .section-sub { color: rgba(255,255,255,0.6); }
+    .why-section .section-tag { color: var(--yellow); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: background 0.2s;
+    }
+    .why-card:hover { background: rgba(255,255,255,0.09); }
+    .why-card-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,213,79,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .why-card h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .why-card p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    /* LESSONS */
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .lesson-card {
+      background: var(--white);
+      border: 1.5px solid #e8edf2;
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+    }
+    .lesson-type {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .lesson-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+    .lesson-rate {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--teal);
+    }
+    .lesson-rate-note { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+    /* CONTACT */
+    .contact-section { background: var(--navy-mid); }
+    .contact-section .section-title { color: var(--white); }
+    .contact-section .section-sub { color: rgba(255,255,255,0.6); }
+    .contact-section .section-tag { color: var(--teal); }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: block;
+    }
+    .contact-card:hover { background: rgba(255,255,255,0.11); transform: translateY(-3px); }
+    .contact-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .contact-value {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+    .contact-action {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    .google-review-box {
+      margin-top: 2.5rem;
+      background: rgba(255,213,79,0.08);
+      border: 1.5px solid rgba(255,213,79,0.3);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .review-stars { font-size: 1.5rem; letter-spacing: 2px; }
+    .review-text { flex: 1; }
+    .review-text p {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      color: var(--yellow);
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    .review-text span { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+    .btn-review {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--navy);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: 50px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 0.2s;
+    }
+    .btn-review:hover { transform: scale(1.04); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    footer p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+    }
+    footer span { color: var(--yellow); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-badge { animation-delay: 0.1s; }
+    .hero h1 { animation-delay: 0.2s; }
+    .hero p { animation-delay: 0.3s; }
+    .hero-cta { animation-delay: 0.4s; }
+    .hero-stats { animation-delay: 0.5s; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+      .hero-stats { gap: 1.5rem; }
+      .google-review-box { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Khidir Tutors 🎯</div>
+    <ul class="nav-links">
+      <li><a href="#subjects">Subjects</a></li>
+      <li><a href="#lessons">Rates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-blob blob1"></div>
+    <div class="hero-blob blob2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🇸🇬 O Level Specialist · Singapore</div>
+      <h1>Physics & Math<br/>actually <span>make sense</span><br/>with Khidir</h1>
+      <p>Say goodbye to last-minute panic. I break down tough O Level concepts into stuff that finally clicks — with a lot of laughs along the way 😄</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/6581397102" class="btn-primary">💬 WhatsApp Me</a>
+        <a href="#subjects" class="btn-secondary">See What I Teach</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Subjects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Dedicated</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">NUS</div>
+          <div class="stat-label">Educated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBJECTS -->
+  <section class="section" id="subjects">
+    <div class="section-inner">
+      <div class="section-tag">What I Teach</div>
+      <h2 class="section-title">O Level Physics & Math 🧪📐</h2>
+      <p class="section-sub">I focus on helping students actually understand the material — not just memorise formulas. Here's what we'll tackle together:</p>
+      <div class="subjects-grid">
+        <div class="subject-card">
+          <span class="subject-icon">⚡</span>
+          <h3>O Level Physics</h3>
+          <p>Mechanics, waves, electricity, magnetism — we go through every chapter until it makes sense. No topic left behind.</p>
+          <div class="subject-accent accent-yellow"></div>
+        </div>
+        <div class="subject-card">
+          <span class="subject-icon">📐</span>
+          <h3>O Level Math (E & A)</h3>
+          <p>From algebra and geometry to statistics and calculus — I help you tackle both E Math and A Math with confidence.</p>
+          <div class="subject-accent accent-teal"></div>
+        </div>
+        <div class="subject-card">
+          <span class="subject-icon">📝</span>
+          <h3>Exam Strategy</h3>
+          <p>Past year papers, timing tricks, and how to pick up marks even when you're unsure. Smart exam technique matters.</p>
+          <div class="subject-accent accent-yellow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ME -->
+  <section class="section why-section">
+    <div class="section-inner">
+      <div class="section-tag">Why Students Choose Me</div>
+      <h2 class="section-title">Fun, flexible & real results 🚀</h2>
+      <p class="section-sub">I get it — studying can feel like a drag. My goal is to make sessions feel less like a chore and more like things actually start clicking.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card-icon">🎓</div>
+          <h4>NUS Trained</h4>
+          <p>I know this material inside out — and how to explain it at O Level in a way that sticks.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">😄</div>
+          <h4>Actually Fun</h4>
+          <p>No boring lectures. I keep things engaging, relatable, and even a little silly when it helps.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🧩</div>
+          <h4>Tailored to You</h4>
+          <p>Every student is different. I adjust my pace and style to what works best for you.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">📍</div>
+          <h4>Online & In-Person</h4>
+          <p>Flexible sessions wherever you learn best — at home, library, or over Zoom.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LESSONS & RATES -->
+  <section class="section" id="lessons">
+    <div class="section-inner">
+      <div class="section-tag">Lessons & Rates</div>
+      <h2 class="section-title">Transparent pricing, no surprises 💸</h2>
+      <p class="section-sub">My rates follow the market full-time tutor rate and are negotiable based on your needs. Drop me a message and we'll work something out!</p>
+      <div class="lessons-grid">
+        <div class="lesson-card">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">💻</div>
+          <div class="lesson-type">Online Sessions</div>
+          <p class="lesson-desc">Conducted over Zoom or Google Meet. Flexible scheduling, digital worksheets, recorded revision clips.</p>
+          <div class="lesson-rate">Market Rate</div>
+          <div class="lesson-rate-note">Negotiable · Contact for quote</div>
+        </div>
+        <div class="lesson-card">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">🏠</div>
+          <div class="lesson-type">In-Person Sessions</div>
+          <p class="lesson-desc">Face-to-face tutoring at your home or a mutually agreed location. Great for hands-on problem solving.</p>
+          <div class="lesson-rate">Market Rate</div>
+          <div class="lesson-rate-note">Negotiable · Contact for quote</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="section-inner">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Ready to start? Let's chat! 👋</h2>
+      <p class="section-sub">Send me a message on WhatsApp or drop an email. I usually reply fast — no waiting for days!</p>
+      <div class="contact-cards">
+        <a href="https://wa.me/6581397102" class="contact-card">
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">+65 8139 7102</div>
+          <div class="contact-action">💬 Message me →</div>
+        </a>
+        <a href="mailto:E0031491@u.nus.edu" class="contact-card">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">E0031491@u.nus.edu</div>
+          <div class="contact-action">📧 Send an email →</div>
+        </a>
+      </div>
+
+      <div class="google-review-box">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <div class="review-text">
+          <p>Happy with your lessons? Leave me a Google Review!</p>
+          <span>It really helps other students find me 🙏</span>
+        </div>
+        <a href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" class="btn-review" target="_blank">Leave a Review</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 <span>Khidir</span> · O Level Physics & Math Tutor · Singapore 🇸🇬</p>
+    <p style="margin-top: 0.4rem;">Built with ❤️ · Hosted on GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
